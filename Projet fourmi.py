@@ -107,6 +107,32 @@ bouton_arreter.grid(column=1, row=1)
 
 # Lancement de la boucle principale de la fenêtre
 
+def draw_arrow(i, j, drn):       #Définiton de la fourmi et et de la direction
+    sep = CASE // 8
+    east = (sep, CASE // 2)
+    west = (CASE - sep, CASE // 2)
+    north = (CASE // 2, sep)
+    south = (CASE // 2, CASE - sep)
+    x, y = j * CASE, i * CASE
+    if drn == (0, 1):
+        A = (x + east[0], y + east[1])
+        B = (x + west[0], y + west[1])
+    elif drn ==  (-1, 0):
+        A = (x + south[0], y + south[1])
+        B = (x + north[0], y + north[1])
+    elif drn ==  (0, -1):
+        B = (x + east[0], y + east[1])
+        A = (x + west[0], y + west[1])
+    else:
+        B = (x + south[0], y + south[1])
+        A = (x + north[0], y + north[1])
+    return cnv.create_line(
+        A,
+        B,
+        width=ARROW_WIDTH,
+        arrow='last',
+        fill='red',
+        arrowshape=(18, 30, 8))
 
 
 
