@@ -82,6 +82,36 @@ def dessin(pos,drn,items):
 #Il manque l'animation de la fourmi, la fourmi, et les touches de contrôle pour créer le mouvement
 
 
+#Boutons
+
+import tkinter as tk
+
+# Fonction pour démarrer la simulation
+def demarrer_simulation():
+    # Remplacer cette fonction par votre logique de simulation
+    width, height = 10, 10  # Taille de la grille pour commencer
+    grille = [[" "] * width for _ in range(height)]
+    x, y = width // 2, height // 2
+    grille[y][x] = "#"  # Position initiale de la fourmi
+    for ligne in grille:
+        print(" ".join(ligne))
+
+# Création de la fenêtre principale
+fenetre = tk.Tk()
+fenetre.title("Simulation de la fourmi")
+
+# Création du bouton pour démarrer
+bouton_demarrer = tk.Button(fenetre, text="Démarrer", command=demarrer_simulation)
+bouton_demarrer.pack(padx=10, pady=5)  # Ajouter un espace horizontal de 10 pixels et un espace vertical de 5 pixels
+
+# Création du bouton pour arrêter 
+bouton_arreter = tk.Button(fenetre, text="Arrêter", command=fenetre.quit)
+bouton_arreter.pack(padx=10, pady=5) 
+
+# Lancement de la boucle principale de la fenêtre
+fenetre.mainloop()
+
+
 
 
 grille.mainloop() # Lancement de la boucle principale LAISSER A LA FIN
