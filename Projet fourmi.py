@@ -1,20 +1,29 @@
 #Code inspiré du site : http://pascal.ortiz.free.fr/contents/tkinter/projets_tkinter/langton/langton.html
 
 import tkinter as tk
+SIDE = 1000
+WIDTH = SIDE
+HEIGHT = SIDE
+DIM = 100
+UNIT = SIDE // DIM
+COLOR_OFF = 'snow'
+COLOR_ON = 'gray16'
+def make_grid():
+    for j in range(nwidth):
+        cnv.create_line((j * UNIT, 0), (j * UNIT, HEIGHT))
+    for i in range(nheight):
+        cnv.create_line((0, i * UNIT), (WIDTH, i * UNIT))
 
-HEIGHT = 500
-WIDTH = 500
-SIDE = 500
-UNIT= SIDE // 7
-largeur_case = WIDTH // 7
-hauteur_case = HEIGHT // 7
-Color_OFF= 'old lace'
-Color_ON='grey 16'
-#items[i][j]= plateau dessiner par deplacement de la fourmi, 
-#items==0 case blanche = déplacement droite
-#pos=position de la fourmi (i,j)
-#drn = direction N=Nord,S=Sud,E=Est,O=Ouest
-#r = nouvelle position de la fourmi
+
+root = tk.Tk()
+cnv = tk.Canvas(root, width=WIDTH, height=HEIGHT,
+             background=COLOR_OFF)
+cnv.pack()
+
+nwidth = WIDTH // UNIT
+nheight = HEIGHT // UNIT
+
+make_grid()
 
 #Fonction qui détermine la nouvelle position et direction de la fourmi
 def bouger ( pos,drn,items):
@@ -75,7 +84,7 @@ def dessin(pos,drn,items):
 
 
 
-grille.mainloop() # Lancement de la boucle principale
+grille.mainloop() # Lancement de la boucle principale LAISSER A LA FIN
 #Interface graphique crée
 
 
