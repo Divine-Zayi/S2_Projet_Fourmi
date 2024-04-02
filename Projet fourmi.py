@@ -153,6 +153,11 @@ bouton_demarrer.grid(column=1, row=0)  # Ajouter un espace horizontal de 10 pixe
 bouton_arreter = tk.Button(root, text="Arrêter", command=root.quit)
 bouton_arreter.grid(column=1, row=1)
 
+#Création du bouton pour ajouter une fourmi
+boutton_ajout = tk.Button(fenetre, text=" Ajouter une fourmi ", command=add_ant)
+boutton_ajout.pack()
+
+
 # Lancement de la boucle principale de la fenêtre
 
 
