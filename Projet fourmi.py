@@ -141,11 +141,11 @@ def demarrer_simulation():
         
 
  #Fonction intitialisation de la boucle
-def init():
-    global pos, drn, items,arr
-    cnv.delete("all")
-    cnv.focus_set()
-    make_grid()
+#def init():
+    #global pos, drn, items,arr
+    #cnv.delete("all")
+    #cnv.focus_set()
+    #make_grid()
 
 
 
