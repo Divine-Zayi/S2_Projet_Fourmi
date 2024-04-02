@@ -140,13 +140,6 @@ def demarrer_simulation():
         print(" ".join(ligne))
         
 
- #Fonction intitialisation de la boucle
-#def init():
-    #global pos, drn, items,arr
-    #cnv.delete("all")
-    #cnv.focus_set()
-    #make_grid()
-
 
 
 
