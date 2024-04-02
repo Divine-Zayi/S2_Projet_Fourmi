@@ -1,12 +1,13 @@
-
 #Code inspiré du site : http://pascal.ortiz.free.fr/contents/tkinter/projets_tkinter/langton/langton.html
 
 import tkinter as tk
 SIDE = 700
-WIDTH = SIDE
-HEIGHT = SIDE
+WIDTH = 700
+HEIGHT = 700
 DIM = 100
 UNIT = SIDE // DIM
+CASE = SIDE // 30
+ARROW_WIDTH = CASE // 100
 largeur_case = WIDTH // 7
 hauteur_case = HEIGHT // 7
 COLOR_OFF = 'snow'
@@ -27,6 +28,37 @@ nwidth = WIDTH // UNIT
 nheight = HEIGHT // UNIT
 
 make_grid()
+
+
+def draw_arrow(i, j, drn):       #Définiton de la fourmi et et de la direction
+    sep= CASE // 8
+    S = (CASE // 2, CASE- sep ) 
+    E = (sep, CASE // 2)
+    O = (CASE - sep, CASE // 2)
+    N = (CASE // 2, sep)
+    StopAsyncIteration = (CASE // 2, CASE - sep)
+    x, y = j * CASE, i * CASE
+    if drn == (0, 1):
+        A = (x + E[0], y + E[1])
+        B = (x + O[0], y + O[1])
+    elif drn ==  (-1, 0):
+        A = (x + S[0], y + S[1])
+        B = (x + N[0], y + N[1])
+    elif drn ==  (0, -1):
+        B = (x + E[0], y + E[1])
+        A = (x + O[0], y + O[1])
+    else:
+        B = (x + S[0], y + S[1])
+        A = (x + N[0], y + N[1])
+    return canvas.create_line(
+        A,
+        B,
+        width=ARROW_WIDTH,
+        arrow='last',
+        fill='red',
+        arrowshape=(8, 10, 5))
+print(draw_arrow(0,0,'N')) #Changer dimension Grille et Fourmi
+
 
 #Fonction qui détermine la nouvelle position et direction de la fourmi
 def bouger ( pos,drn,items):
@@ -56,7 +88,7 @@ def bouger ( pos,drn,items):
 
 
 
-#Fonction qui change l couleur de la case actuelle
+#Fonction qui change la couleur de la case actuelle
 def case_courante(i,j):
     if (i+j)%2 == 0:#Si la case est blanche
         couleur = COLOR_ON
@@ -81,6 +113,20 @@ def dessin(pos,drn,items):
         items[i][j] = 0
     return (ii,jj),ndrn
 
+#Fonction qui démarre la simulation
+def démarrer_arreter(event):
+    global stop 
+    stop=not stop
+
+
+
+
+ #Fonction intitialisation de la boucle
+#def init():
+    #global pos, drn, items,arr
+    #cnv.delete("all")
+    #cnv.focus_set()
+    #make_grid()
 
 
 # Fonction pour démarrer la simulation
@@ -92,13 +138,22 @@ def demarrer_simulation():
     grille[y][x] = "#"  # Position initiale de la fourmi
     for ligne in grille:
         print(" ".join(ligne))
+        
 
-# Création de la fenêtre principale
-# fenetre = tk.Tk()
-        root.title("Simulation de la fourmi")
+ #Fonction intitialisation de la boucle
+def init():
+    global pos, drn, items,arr
+    cnv.delete("all")
+    cnv.focus_set()
+    make_grid()
+
+
+
+
+root.title("Simulation de la fourmi")
 
 # Création du bouton pour démarrer
-bouton_demarrer = tk.Button(root, text="Démarrer", command=bouger and case_courante and demarrer_simulation)
+bouton_demarrer = tk.Button(root, text="Démarrer", command= démarrer_arreter)
 bouton_demarrer.grid(column=1, row=0)  # Ajouter un espace horizontal de 10 pixels et un espace vertical de 5 pixels
 
 # Création du bouton pour arrêter 
@@ -107,48 +162,5 @@ bouton_arreter.grid(column=1, row=1)
 
 # Lancement de la boucle principale de la fenêtre
 
-def draw_arrow(i, j, drn):       #Définiton de la fourmi et et de la direction
-    sep = CASE // 8
-    east = (sep, CASE // 2)
-    west = (CASE - sep, CASE // 2)
-    north = (CASE // 2, sep)
-    south = (CASE // 2, CASE - sep)
-    x, y = j * CASE, i * CASE
-    if drn == (0, 1):
-        A = (x + east[0], y + east[1])
-        B = (x + west[0], y + west[1])
-    elif drn ==  (-1, 0):
-        A = (x + south[0], y + south[1])
-        B = (x + north[0], y + north[1])
-    elif drn ==  (0, -1):
-        B = (x + east[0], y + east[1])
-        A = (x + west[0], y + west[1])
-    else:
-        B = (x + south[0], y + south[1])
-        A = (x + north[0], y + north[1])
-    return cnv.create_line(
-        A,
-        B,
-        width=ARROW_WIDTH,
-        arrow='last',
-        fill='red',
-        arrowshape=(18, 30, 8))
 
 
-def draw(pos, drn, arrow):
-    # Dessiner la grille avec la fourmi
-    # Supprimer précédente
-    cnv.delete(arrow)
-     # la nouvelle position et direction de la fourmi
-    (new_pos, new_drn) = move(pos, drn)
-    i, j = pos
-
-
-
-#Il manque l'animation de la fourmi, la fourmi, et les touches de contrôle pour créer le mouvement
-
-
-
-
-root.mainloop() # Lancement de la boucle principale LAISSER A LA FIN
-#Interface graphique crée
