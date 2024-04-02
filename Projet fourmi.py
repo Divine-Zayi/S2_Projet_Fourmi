@@ -154,7 +154,7 @@ bouton_arreter = tk.Button(root, text="Arrêter", command=root.quit)
 bouton_arreter.grid(column=1, row=1)
 
 #Création du bouton pour ajouter une fourmi
-boutton_ajout = tk.Button(fenetre, text=" Ajouter une fourmi ", command=add_ant)
+boutton_ajout = tk.Button(root, text=" Ajouter une fourmi ", command=add_ant)
 boutton_ajout.pack()
 
 
