@@ -153,7 +153,15 @@ bouton_demarrer.grid(column=1, row=0)  # Ajouter un espace horizontal de 10 pixe
 bouton_arreter = tk.Button(root, text="Arrêter", command=root.quit)
 bouton_arreter.grid(column=1, row=1)
 
-#Création du bouton pour ajouter une fourmi
+#Création du bouton pour ajouter une foumi
+
+def add_ant():
+   #"""Ajouter une nouvelle fourmi."""
+    global position, direction, arrow
+    position = (10, 10)  # Position initiale de la nouvelle fourmi
+    direction = "UP"  # Direction initiale de la nouvelle fourmi
+    arrow = cnv.create_text(position[0] * 30, position[1] * 30, text="", font=("Arial", 30), fill="pink")
+
 boutton_ajout = tk.Button(root, text=" Ajouter une fourmi ", command=add_ant)
 boutton_ajout.pack()
 
