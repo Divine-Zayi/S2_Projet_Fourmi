@@ -135,6 +135,14 @@ def draw_arrow(i, j, drn):       #Définiton de la fourmi et et de la direction
         arrowshape=(18, 30, 8))
 
 
+def draw(pos, drn, arrow):
+    # Dessiner la grille avec la fourmi
+    # Supprimer précédente
+    cnv.delete(arrow)
+     # la nouvelle position et direction de la fourmi
+    (new_pos, new_drn) = move(pos, drn)
+    i, j = pos
+
 
 
 #Il manque l'animation de la fourmi, la fourmi, et les touches de contrôle pour créer le mouvement
