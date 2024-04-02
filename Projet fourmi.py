@@ -135,6 +135,8 @@ def draw_arrow(i, j, drn):       #Définiton de la fourmi et et de la direction
         arrowshape=(18, 30, 8))
 
 
+boutton_ajout = tk.Button(fenetre, text="Ajouter une fourmi", command=add_ant)
+boutton_ajout.pack()
 
 
 #Il manque l'animation de la fourmi, la fourmi, et les touches de contrôle pour créer le mouvement
