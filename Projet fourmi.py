@@ -163,9 +163,10 @@ def add_ant():
     arrow = cnv.create_text(position[0] * 30, position[1] * 30, text="", font=("Arial", 30), fill="pink")
 
 boutton_ajout = tk.Button(root, text=" Ajouter une fourmi ", command=add_ant)
-boutton_ajout.pack()
+boutton_ajout.pack(column=1, row=2)
 
-
+bouton_fermer = tk.Button(root, text="Fermer", command=root.destroy)
+bouton_fermer.grid(column=1, row=3) #commande corrigé par le chatGPT
 # Lancement de la boucle principale de la fenêtre
 
 
